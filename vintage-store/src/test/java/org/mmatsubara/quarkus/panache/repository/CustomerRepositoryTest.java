@@ -4,28 +4,29 @@ import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 import org.mmatsubara.quarkus.jdbc.Artist;
+import org.mmatsubara.quarkus.jpa.Customer;
 
 import javax.inject.Inject;
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest
 public class CustomerRepositoryTest {
 
   @Inject
-  ArtistRepository artistRepository;
+  CustomerRepository repository;
 
   @Test
   @TestTransaction
-  public void shouldCreateAndFindAnArtist() throws SQLException {
-    Artist artist = new Artist("name", "bio");
+  public void shouldCreateAndFindACustomer() {
+    var customer = new Customer("first name", "last name", "email");
 
-    artistRepository.persist(artist);
+    repository.persist(customer);
 
-    assertNotNull(artist.getId());
-    artist = artistRepository.findById(artist.getId());
-    assertEquals("name", artist.getName());
+    assertNotNull(customer.getId());
+    customer = repository.findById(customer.getId());
+    assertEquals("first name", customer.getFirstName());
+    assertTrue(repository.listAllDans().size() <= repository.count());
   }
 }

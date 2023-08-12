@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.mmatsubara.quarkus.jdbc.Artist;
 
 import javax.inject.Inject;
-import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -19,13 +18,22 @@ public class ArtistRepositoryTest {
 
   @Test
   @TestTransaction
-  public void shouldCreateAndFindAnArtist() throws SQLException {
+  public void shouldCreateAndFindAnArtist() {
+    var count = artistRepository.count();
+    var listAll = artistRepository.listAll().size();
+    assertEquals(count, listAll);
+    assertEquals(artistRepository.listAllArtistsSorted().size(), listAll);
+
     Artist artist = new Artist("name", "bio");
 
     artistRepository.persist(artist);
+    assertEquals(count + 1, artistRepository.count());
 
     assertNotNull(artist.getId());
     artist = artistRepository.findById(artist.getId());
     assertEquals("name", artist.getName());
+
+    artistRepository.deleteById(artist.getId());
+    assertEquals(count, artistRepository.count());
   }
 }
