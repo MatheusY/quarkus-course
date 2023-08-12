@@ -1,9 +1,9 @@
-package org.mmatsubara.quarkus.panache;
+package org.mmatsubara.quarkus.panache.repository;
 
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
-import org.mmatsubara.quarkus.jdbc.Artist;
+import org.mmatsubara.quarkus.panache.model.Publisher;
 
 import java.sql.SQLException;
 
