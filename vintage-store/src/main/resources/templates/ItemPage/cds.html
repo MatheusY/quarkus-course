@@ -1,5 +1,5 @@
 {#include base.html}
-{#title}{cds.size} CDs{/title}
+{#title}CDs{/title}
 {#body}
 <table class="table">
   <thead>
@@ -7,20 +7,18 @@
     <th scope="col">#</th>
     <th scope="col">Title</th>
     <th scope="col">Genre</th>
-    <th scope="col">Price</th>
     <th scope="col">Music Company</th>
-    <th scope="col">Artist</th>
+    <th scope="col">Price</th>
   </tr>
   </thead>
   <tbody>
   {#for cd in cds}
   <tr>
-    <th scope="row"><a href="http://localhost:8080/page/items/cds/{cd.id}">{cd.id}</a></th>
-    <td>{cd.title}</td>
-    <td>{cd.genre}</td>
-    <td>{cd.price}</td>
-    <td>{cd.musicCompany}</td>
-    <td><a href="http://localhost:8080/page/artists/{cd.artist.id}">{cd.artist.name}</a></td>
+    <th scope="row">{cd.id}</th>
+    <th>{cd.title}</th>
+    <th>{cd.genre}</th>
+    <th>{cd.musicCompany}</th>
+    <th>{cd.price}</th>
   </tr>
   {/for}
   </tbody>

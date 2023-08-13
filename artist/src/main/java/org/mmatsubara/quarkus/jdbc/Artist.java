@@ -7,7 +7,7 @@ public class Artist {
   private Long id;
   private String name;
   private String bio;
-  private Instant createDate = Instant.now();
+  private Instant createdDate = Instant.now();
 
   public Artist() {
   }
@@ -41,11 +41,11 @@ public class Artist {
     this.bio = bio;
   }
 
-  public Instant getCreateDate() {
-    return createDate;
+  public Instant getCreatedDate() {
+    return createdDate;
   }
 
-  public void setCreateDate(Instant createDate) {
-    this.createDate = createDate;
+  public void setCreatedDate(Instant createdDate) {
+    this.createdDate = createdDate;
   }
 }

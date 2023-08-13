@@ -22,7 +22,7 @@ public class ArtistRepository {
       ps.setLong(1, artist.getId());
       ps.setString(2, artist.getName());
       ps.setString(3, artist.getBio());
-      ps.setTimestamp(4, Timestamp.from(artist.getCreateDate()));
+      ps.setTimestamp(4, Timestamp.from(artist.getCreatedDate()));
       ps.executeUpdate();
     }
     conn.close();
@@ -40,7 +40,7 @@ public class ArtistRepository {
         artist.setId(rs.getLong(1));
         artist.setName(rs.getString(2));
         artist.setBio(rs.getString(3));
-        artist.setCreateDate(rs.getTimestamp(4).toInstant());
+        artist.setCreatedDate(rs.getTimestamp(4).toInstant());
       }
     }
     conn.close();

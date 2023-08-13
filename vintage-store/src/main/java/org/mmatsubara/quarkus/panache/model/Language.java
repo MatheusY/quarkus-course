@@ -4,5 +4,10 @@ public enum Language {
   ENGLISH,
   FRENCH,
   SPANISH,
+  RUSSIAN,
+  GERMAN,
+  CHINESE,
+  JAPANESE,
+  INDIAN,
   PORTUGUESE;
 }
